@@ -20,6 +20,7 @@ public class Game {
         game.getStartingPosition();
     }
 
+    //Is called whenever the player needs to move
     public void timeToMove() {
         game.textIndentornator();
         System.out.println("Will you go LEFT or RIGHT?");
@@ -64,6 +65,7 @@ public class Game {
         }
     }
 
+    //Called whenever the player finds an item
     public void timeToInteract(){
         game.textIndentornator();
         System.out.println("You come across a " + game.getEntityName());
@@ -96,6 +98,7 @@ public class Game {
 
     }
 
+    //Called whenever the player finds an exit
     public void timeToLeave(){
         game.textIndentornator();
         System.out.println("You come across what looks like an exit.");
@@ -119,10 +122,9 @@ public class Game {
                 game.invalidInput();
             }
         }
+    }
 
-
-        }
-
+//Called whenever the player encounters an enemy
     public void timeToAttack(){
         game.textIndentornator();
         System.out.println("You encounter a " + game.getEntityName());
@@ -191,12 +193,13 @@ public class Game {
 
     }
 
+    //Starts the game
     public void beginGame(){
         game.introduction();
         this.newFloor();
-
     }
 
+    //Creates a new floor
     public void newFloor(){
         this.initializeGame();
         game.floorLevel(floorNumber);

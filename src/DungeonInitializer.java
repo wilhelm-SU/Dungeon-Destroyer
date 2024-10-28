@@ -13,6 +13,7 @@ public class DungeonInitializer extends InteractableObjectInitializer {
         tail = null;
     }
 
+    //Adds rooms in a circular list
     public void addRoom(boolean exit, InteractableObjects entity) {
         if (front == null) {
             Room newBox = new Room(null, null, exit, entity);
@@ -31,19 +32,23 @@ public class DungeonInitializer extends InteractableObjectInitializer {
         size++;
     }
 
+    //Sets everything to null, essentially wiping the floor
     public void clearRoom(){
         front = null;
         tail = null;
     }
 
+    //Removes entity, used when player kills or uses entity
     public void removeEntity(){
         occupiedRoom.removeEntity();
     }
 
+    //Sets whatever is in front to occupied room, which is where our player will be
     public void getStartingPosition(){
         occupiedRoom = front;
     }
 
+    //Getters
     public String getEntityName(){
         return occupiedRoom.entityName();
     }
@@ -52,6 +57,7 @@ public class DungeonInitializer extends InteractableObjectInitializer {
         return occupiedRoom.getEntity();
     }
 
+    //Movement
     public void moveRight(){
         occupiedRoom = occupiedRoom.getNextRoom();
     }
@@ -60,11 +66,12 @@ public class DungeonInitializer extends InteractableObjectInitializer {
         occupiedRoom = occupiedRoom.getPreviousRoom();
     }
 
+    //Will return true if the current room occupied is an exit room
     public boolean isRoomExit(){
         return occupiedRoom.isExit();
     }
 
-    //Random stuff
+    //Will randomly make one of the 12 rooms the exit room
     public boolean[] exitRoom(){
         Random randomNumber = new Random();
         boolean[] exits = new boolean[12];
@@ -73,6 +80,7 @@ public class DungeonInitializer extends InteractableObjectInitializer {
         return exits;
     }
 
+    //Flavor text
     public void introduction(){
         System.out.println("You awaken in a dimly lit dungeon room with nothing but a sword and the clothes on your back.");
         System.out.println("To your left is a door, and to the right is the same.");
@@ -98,6 +106,7 @@ public class DungeonInitializer extends InteractableObjectInitializer {
         System.out.println("Invalid input. Please try again.");
     }
 
+    //Indents to make more readable
     public void textIndentornator(){
         System.out.println();
         System.out.println("---");
